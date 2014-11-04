@@ -23,7 +23,7 @@ class ElasticacheCloudwatchMetrics(CloudwatchMetrics):
         return itertools.chain(*(((cc, n) for n in cc['CacheNodes']) for cc in res))
 
     def get_entity_source_name(self, entity):
-        return '%s\\%s' % (entity[0]['CacheClusterId'], entity[1]['CacheNodeId'])
+        return '%s-node%s' % (entity[0]['CacheClusterId'], entity[1]['CacheNodeId'])
 
     def get_entity_dimensions(self, region, entity):
         return dict(CacheClusterId=entity[0]['CacheClusterId'], CacheNodeId=entity[1]['CacheNodeId'])
